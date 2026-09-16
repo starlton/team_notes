@@ -1,0 +1,9 @@
+# Development and test dependencies.
+#
+#     pip install -r requirements-dev.txt
+#
+# The test suite deliberately avoids the heavy runtime dependencies (torch,
+# faster-whisper, pyaudiowpatch), so it runs on any platform in a few seconds.
+-r requirements.txt
+pytest>=8.0
+pytest-cov>=4.1

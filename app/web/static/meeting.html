@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meeting — Teams Notes</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <div>
+      <a href="/" class="small">&larr; All meetings</a>
+      <h1 id="meeting-title">Loading…</h1>
+      <p class="small muted" id="meeting-meta"></p>
+    </div>
+    <div class="row">
+      <button id="regenerate-btn">Regenerate notes</button>
+      <button class="danger" id="delete-btn">Delete</button>
+    </div>
+  </header>
+
+  <div id="error-box" class="notice error hidden"></div>
+  <div id="warnings-box" class="notice hidden"></div>
+  <div id="progress-box" class="panel hidden">
+    <h2>Processing</h2>
+    <p class="small muted" id="progress-stage"></p>
+    <div class="progress"><div id="progress-fill"></div></div>
+  </div>
+
+  <section class="panel" id="consent-panel">
+    <h2>Consent</h2>
+    <label class="row small">
+      <input type="checkbox" id="informed-toggle">
+      <span>Participants were told this meeting was being recorded</span>
+    </label>
+  </section>
+
+  <section class="panel hidden" id="summary-panel">
+    <h2>Summary</h2>
+    <p id="summary-text"></p>
+    <ul class="clean" id="summary-bullets"></ul>
+  </section>
+
+  <section class="panel hidden" id="priorities-panel">
+    <h2>Key points by priority</h2>
+    <div id="priorities-list"></div>
+  </section>
+
+  <section class="panel hidden" id="actions-panel">
+    <h2>To-dos</h2>
+    <div id="actions-list"></div>
+  </section>
+
+  <section class="panel hidden" id="speakers-panel">
+    <h2>Who said what</h2>
+    <p class="small muted">Rename the speakers here, then regenerate the notes so the summary uses real names.</p>
+    <div id="speakers-list"></div>
+    <div class="row" style="margin-top:12px">
+      <button class="primary" id="save-names-btn">Save names</button>
+      <button id="save-regen-btn">Save names &amp; regenerate notes</button>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="drafts-panel">
+    <h2>Follow-up drafts</h2>
+    <div id="drafts-list"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Transcript</h2>
+    <div class="row" style="margin-bottom:10px">
+      <a id="download-transcript" class="small" href="#">Download as text</a>
+      <span class="spacer"></span>
+      <audio id="audio-player" class="hidden" controls preload="none"></audio>
+    </div>
+    <div class="transcript" id="transcript-list"></div>
+    <p class="muted small hidden" id="no-transcript">No transcript yet.</p>
+  </section>
+</div>
+<script type="module" src="/static/meeting.js"></script>
+</body>
+</html>

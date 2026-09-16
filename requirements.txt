@@ -1,0 +1,46 @@
+# Teams Notes - runtime dependencies.
+#
+# Everything here is free and open source. Nothing needs a paid account,
+# a credit card, or a cloud API key. Install into a Python 3.11 venv:
+#
+#     python -m venv .venv
+#     .venv\Scripts\activate
+#     pip install -r requirements.txt
+#
+# On Windows the default PyPI torch wheel is already CPU-only, which is what
+# this app wants. If pip ever tries to pull a CUDA build, force the CPU index:
+#
+#     pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# --- audio capture (Windows only: WASAPI loopback) --------------------------
+PyAudioWPatch>=0.2.12.5 ; sys_platform == "win32"
+
+# --- transcription -----------------------------------------------------------
+faster-whisper>=1.0.3
+
+# --- speaker diarization -----------------------------------------------------
+# Needs a free Hugging Face token and a one-time click-through of the model
+# terms. See the README.
+pyannote.audio>=3.1.1
+torch>=2.2.0
+torchaudio>=2.2.0
+
+# --- numerical work ----------------------------------------------------------
+numpy>=1.26,<3
+# Optional but recommended: gives a faster, slightly cleaner resampler. The app
+# falls back to a pure-numpy implementation if it is missing.
+scipy>=1.11
+
+# --- dashboard ---------------------------------------------------------------
+fastapi>=0.110
+uvicorn[standard]>=0.27
+pydantic>=2.6
+httpx>=0.27
+
+# --- system tray -------------------------------------------------------------
+pystray>=0.19.5
+pillow>=10.2
+
+# --- automatic Teams call detection (Windows only) ---------------------------
+pycaw>=20240210 ; sys_platform == "win32"
+comtypes>=1.2.0 ; sys_platform == "win32"
