@@ -12,8 +12,33 @@ keys, no subscriptions, no cloud transcription, and no telemetry.
 
 ---
 
+## What it looks like
+
+The meeting list, with the setup check, the recording controls and the consent
+toggles:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/dashboard-meetings-dark.png">
+  <img src="docs/dashboard-meetings.png" alt="The Teams Notes dashboard showing three recorded meetings, a setup panel confirming Ollama, speaker labels, transcription and storage are ready, and the recording controls with consent toggles.">
+</picture>
+
+A processed meeting: summary, priority ranking, to-dos, the rename-speakers
+step with talk-time shares, draft follow-ups, and the timestamped transcript:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/dashboard-meeting-dark.png">
+  <img src="docs/dashboard-meeting.png" alt="A single meeting in the dashboard, showing the summary and bullet points, key points ranked by priority, a to-do list with owners and due dates, a per-speaker breakdown with editable names and talk-time bars, two draft follow-up messages with copy buttons, and the timestamped transcript.">
+</picture>
+
+The dashboard follows your system's light or dark setting. These are real
+screenshots of the running app, captured by `tools/make_screenshots.py` against
+invented demo content — no real meeting, and nobody in them exists.
+
+---
+
 ## Contents
 
+- [What it looks like](#what-it-looks-like)
 - [What it does](#what-it-does)
 - [Requirements](#requirements)
 - [Setup](#setup)
@@ -411,6 +436,14 @@ To check coverage:
 
 ```bash
 .venv/bin/python -m pytest --cov=app --cov=config --cov-report=term-missing
+```
+
+The README screenshots are generated from the running app rather than drawn by
+hand. To regenerate them after a UI change:
+
+```bash
+pip install playwright && playwright install chromium
+python tools/make_screenshots.py
 ```
 
 ---
