@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teams Notes</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <h1>Teams Notes</h1>
+    <div class="row">
+      <span class="dot" id="status-dot"></span>
+      <span id="status-text" class="small muted">Loading…</span>
+    </div>
+  </header>
+
+  <div id="error-box" class="notice error hidden"></div>
+
+  <section class="notice hidden" id="consent-notice">
+    <h2>Before you record</h2>
+    <p id="consent-text" class="small"></p>
+    <div class="row">
+      <button class="primary" id="consent-accept">I understand — I'm responsible for consent</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Recording</h2>
+    <div class="row">
+      <input type="text" id="meeting-title" placeholder="Meeting title (optional)" maxlength="200">
+      <button class="primary" id="start-btn">Start recording</button>
+      <button id="stop-btn" disabled>Stop &amp; process</button>
+      <button class="danger" id="discard-btn" disabled>Discard</button>
+    </div>
+    <div class="row small muted" id="levels-row" style="margin-top:10px"></div>
+    <label class="row small" style="margin-top:12px">
+      <input type="checkbox" id="informed-toggle">
+      <span>I have told the participants this meeting is being recorded</span>
+    </label>
+    <label class="row small">
+      <input type="checkbox" id="reminder-toggle">
+      <span>Remind me about consent before each recording</span>
+    </label>
+    <label class="row small">
+      <input type="checkbox" id="autodetect-toggle">
+      <span>Start and stop automatically when a Teams call begins and ends</span>
+    </label>
+  </section>
+
+  <section class="panel">
+    <h2>Setup</h2>
+    <div class="grid" id="health-grid"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Meetings</h2>
+    <ul class="meeting-list" id="meeting-list"></ul>
+    <p class="muted small hidden" id="no-meetings">No meetings recorded yet.</p>
+  </section>
+</div>
+<script type="module" src="/static/index.js"></script>
+</body>
+</html>
